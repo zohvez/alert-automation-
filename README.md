@@ -46,101 +46,76 @@ to receive security notifications quickly.
            │
            ▼
       📱 SOC Analyst
+```
+## Technologies Used
 
-# Technologies Used
-
-Wazuh
-
-Shuffle SOAR
-
-Telegram Bot API
-
-Webhooks
-
-JSON
-
-Security Alert Automation
-
-
+- Wazuh
+- Shuffle SOAR
+- Telegram Bot API
+- Webhooks
+- JSON
+- Security Alert Automation
 
 ---
 
-Workflow
+## Workflow
 
-1. Wazuh Alert Generation
+### 1. Wazuh Alert Generation
 
-Wazuh monitors endpoint and security events and generates alerts based on configured detection rules.
+Wazuh monitors endpoint and security events and generates alerts based on
+configured detection rules.
 
 Example alert information includes:
 
-Alert title
+- Alert Title
+- Severity
+- Rule ID
+- Timestamp
+- Endpoint Information
+- Security Event Details
 
-Severity
+### 2. Alert Forwarding
 
-Rule ID
+The Wazuh alert is forwarded to Shuffle SOAR through the configured
+integration or webhook.
 
-Timestamp
-
-Endpoint information
-
-Security event details
-
-
-2. Alert Forwarding
-
-The Wazuh alert is forwarded to Shuffle SOAR through the configured integration/webhook.
-
-3. Shuffle SOAR Processing
+### 3. Shuffle SOAR Processing
 
 Shuffle receives the Wazuh alert and processes the event.
 
 The workflow extracts important fields such as:
 
-Title
-Severity
-Rule ID
-Timestamp
+- Title
+- Severity
+- Rule ID
+- Timestamp
 
-4. Telegram Notification
+### 4. Telegram Notification
 
 Shuffle sends the processed alert to Telegram using a Telegram Bot.
 
-The final notification is formatted for easy SOC analyst investigation.
-
+The final notification is formatted to provide SOC analysts with the
+important information required for initial alert investigation.
 
 ---
 
-Example Telegram Alert
+## Example Telegram Alert
 
-Example notification:
+### Authentication Failure
 
+```text
 🚨 WAZUH ALERT 🚨
 
 Title: Logon Failure - Unknown user or bad password
-
 Severity: 2
-
 Rule ID: 60122
-
 Timestamp: 2026-06-09T08:24:02.288+0000
+```
+##Shuffle SOAR Workflow
 
-Another example:
+###The implemented Shuffle SOAR workflow follows this process:
 
-🚨 WAZUH ALERT 🚨
-
-Title: Windows Workstation Logon Success
-
-Severity: 1
-
-Rule ID: 60118
-
-
----
-
-Shuffle SOAR Workflow
-
-The implemented Shuffle workflow contains two primary components:
-
+```text
 Receive Wazuh Alert
         │
         ▼
@@ -154,144 +129,81 @@ Telegram Bot
         │
         ▼
 Send Message
-
+```
 The Telegram action is configured to send the processed Wazuh alert using the Telegram Bot API.
 
+## Wazuh Monitoring Dashboard
 
----
-
-Wazuh Monitoring Dashboard
-
-The Wazuh dashboard provides visibility into endpoint security events and generated alerts.
+The Wazuh dashboard provides visibility into endpoint security events and
+generated alerts.
 
 The lab includes monitoring of events such as:
 
-Authentication failures
-
-Authentication successes
-
-Windows security events
-
-Endpoint activity
-
-Wazuh rule-based detections
-
-
+- Authentication failures
+- Authentication successes
+- Windows security events
+- Endpoint activity
+- Wazuh rule-based detections
 
 ---
 
-Automation Benefits
+## Automation Benefits
 
 This automation provides several benefits for SOC operations:
 
-Reduces manual alert monitoring
-
-Provides faster security notifications
-
-Centralizes alert processing
-
-Improves SOC analyst awareness
-
-Automates repetitive notification tasks
-
-Provides structured security alert information
-
-Supports faster initial triage
-
-
+- Reduces manual alert monitoring
+- Provides faster security notifications
+- Centralizes alert processing
+- Improves SOC analyst awareness
+- Automates repetitive notification tasks
+- Provides structured security alert information
+- Supports faster initial triage
 
 ---
 
-Skills Demonstrated
+## Skills Demonstrated
 
-SIEM
+### SIEM
 
-Wazuh alert monitoring
+- Wazuh alert monitoring
+- Security event analysis
+- Rule ID analysis
+- Alert severity analysis
+- Authentication event investigation
 
-Security event analysis
+### SOAR
 
-Rule ID analysis
+- Shuffle SOAR workflow creation
+- Alert automation
+- Webhook integration
+- Data extraction
+- Workflow-based response
 
-Alert severity analysis
+### Security Automation
 
-Authentication event investigation
+- Wazuh-to-Shuffle integration
+- Telegram notification automation
+- JSON-based alert processing
+- Automated security notification
 
+### Incident Response
 
-SOAR
-
-Shuffle SOAR workflow creation
-
-Alert automation
-
-Webhook integration
-
-Data extraction
-
-Workflow-based response
-
-
-Security Automation
-
-Wazuh-to-Shuffle integration
-
-Telegram notification automation
-
-JSON-based alert processing
-
-Automated security notification
-
-
-Incident Response
-
-Alert triage
-
-Security event notification
-
-Initial investigation support
-
-Automated SOC workflows
-
-
+- Alert triage
+- Security event notification
+- Initial investigation support
+- Automated SOC workflows
 
 ---
 
-Project Screenshots
-
-Shuffle SOAR Workflow
-
-The Shuffle workflow receives Wazuh alerts and sends processed security notifications through Telegram.
-
-
-
-
----
-
-Wazuh Security Monitoring Dashboard
-
-Wazuh provides visibility into generated security alerts and endpoint events.
-
-
-
-
----
-
-Telegram Security Alerts
-
-Processed Wazuh alerts are automatically delivered to Telegram through the configured bot.
-
-
-
-
----
-
-Example Detection
+## Example Detection
 
 The automation was tested using Wazuh authentication events.
 
-Example:
+### Logon Failure Detection
 
+```text
 Rule ID: 60122
 Event: Logon Failure - Unknown user or bad password
 Severity: 2
+```
 
-The alert was successfully processed through Shuffle SOAR and delivered to Telegram.
