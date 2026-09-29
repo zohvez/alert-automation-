@@ -111,9 +111,9 @@ Severity: 2
 Rule ID: 60122
 Timestamp: 2026-06-09T08:24:02.288+0000
 ```
-### 5.Shuffle SOAR Workflow
+## Shuffle SOAR Workflow
 
-## The implemented Shuffle SOAR workflow follows this process:
+### The implemented Shuffle SOAR workflow follows this process:
 
 ```text
 Receive Wazuh Alert
